@@ -786,8 +786,8 @@ function addDynamicLayer(layersql) {
         imageParameters.transparent = true;
 
         var layerDefs = [];
-        // layerDefs[visiableArray[0]] = layersql;
-        layerDefs[visiableArray[0]] = "";
+         layerDefs[visiableArray[0]] = layersql;
+       // layerDefs[visiableArray[0]] = "";
         imageParameters.layerDefinitions = layerDefs;
         //imageParameters.layerDefinitions = [layersql];
 

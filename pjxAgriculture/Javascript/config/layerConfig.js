@@ -2,7 +2,7 @@
     "粮食生产功能区": {
 
         "功能区级别": {
-            "url": "http://localhost:6080/arcgis/rest/services/lsService/MapServer",
+            "url": "http://118.178.118.139/ArcGIS/rest/services/XDNY_LS/MapServer",
             "searchField": "认定名称",
             "array": [0],
             "fieldInfos": [{
@@ -49,7 +49,7 @@
             "jsondata": "Json/粮食生产功能区.json",
         },
         "建设状态": {
-            "url": "http://localhost:6080/arcgis/rest/services/lsService/MapServer",
+            "url": "http://118.178.118.139/ArcGIS/rest/services/XDNY_LS/MapServer",
             "searchField": "认定名称",
             "array": [1],
             "fieldInfos": [{
@@ -65,10 +65,29 @@
                 //  "label": "By",
                 visible: true
             }, {
-                "fieldName": "县市区名称",
-
+                "fieldName": "规划编号",
                 visible: true
-            }],
+            },
+           {
+               "fieldName": "建设状态",
+               visible: true
+           }, {
+               "fieldName": "建设等级",
+
+               visible: true
+           }, {
+               "fieldName": "建设认定年",
+
+               visible: true
+           },
+          {
+              "fieldName": "地市名称",
+              visible: true
+          }, {
+              "fieldName": "县市区名称",
+
+              visible: true
+          }],
             "imgurl": {
                 "已建": "",
                 "在建": "",
@@ -76,8 +95,8 @@
             },
             "jsondata": "Json/粮食生产功能区.json",
         }, "建设面积": {
-            "url": "http://localhost:6080/arcgis/rest/services/ls_2000/MapServer",
-            "array": [0],
+            "url": "http://118.178.118.139/ArcGIS/rest/services/XDNY_LS/MapServer",
+            "array": [2],
             "searchField": "认定名称",
             "fieldInfos": [{
                 "fieldName": "认定编号",
@@ -88,14 +107,33 @@
                 "label": "认定名称",
                 visible: true
             }, {
-                "fieldName": "认定面积",
-                "label": "认定面积",
+                "fieldName": "规划名称",
+                //  "label": "By",
                 visible: true
             }, {
-                "fieldName": "县市区名称",
+                "fieldName": "规划编号",
+                visible: true
+            },
+            {
+                "fieldName": "建设状态",
+                visible: true
+            }, {
+                "fieldName": "建设等级",
 
                 visible: true
-            }],
+            }, {
+                "fieldName": "建设认定年",
+
+                visible: true
+            },
+           {
+               "fieldName": "地市名称",
+               visible: true
+           }, {
+               "fieldName": "县市区名称",
+
+               visible: true
+           }],
             "imgurl": {
                 "大于1000亩": "",
                 "500~1000亩": "",
@@ -105,8 +143,8 @@
             "jsondata": "Json/粮食生产功能区.json",
         },
         "建设年份": {
-            "url": "http://localhost:6080/arcgis/rest/services/ls_2000/MapServer",
-            "array": [0],
+            "url": "http://118.178.118.139/ArcGIS/rest/services/XDNY_LS/MapServer",
+            "array": [3],
             "searchField": "认定名称",
             "fieldInfos": [{
                 "fieldName": "认定编号",
@@ -117,14 +155,33 @@
                 "label": "认定名称",
                 visible: true
             }, {
-                "fieldName": "建设认定年",
-                "label": "建设认定年",
+                "fieldName": "规划名称",
+                //  "label": "By",
                 visible: true
             }, {
-                "fieldName": "县市区名称",
-
+                "fieldName": "规划编号",
                 visible: true
-            }],
+            },
+          {
+              "fieldName": "建设状态",
+              visible: true
+          }, {
+              "fieldName": "建设等级",
+
+              visible: true
+          }, {
+              "fieldName": "建设认定年",
+
+              visible: true
+          },
+         {
+             "fieldName": "地市名称",
+             visible: true
+         }, {
+             "fieldName": "县市区名称",
+
+             visible: true
+         }],
             "imgurl": {
                 "2017": "",
                 "2016": "",
@@ -141,7 +198,7 @@
     "现代农业园区": {
 
         "现代农业综合区": {
-            "url": "http://localhost:6080/arcgis/rest/services/ls_2000/MapServer",
+            "url": "",
             "array": [0],
             "searchField": "认定名称",
             "fieldInfos": [{
@@ -158,10 +215,10 @@
                 "已认证": ""
 
             },
-            "jsondata": "Json/粮食生产功能区.json",
+            "jsondata": "",
         },
         "主导产业示范区": {
-            "url": "http://localhost:6080/arcgis/rest/services/xdny/MapServer",
+            "url": "http://118.178.118.139/ArcGIS/rest/services/XZNY_YQ/MapServer",
             "array": [0],
             "searchField": "名称",
             "fieldInfos": [{
@@ -188,7 +245,7 @@
             },
             "jsondata": "Json/主导产业示范区.json",
         }, "特色农业精品区": {
-            "url": "http://localhost:6080/arcgis/rest/services/xdny/MapServer",
+            "url": "http://118.178.118.139/ArcGIS/rest/services/XZNY_YQ/MapServer",
             "array": [1],
             "searchField": "名称",
             "fieldInfos": [{
@@ -219,7 +276,7 @@
     "标准农田": {
 
         "千万亩工程项目": {
-            "url": "http://localhost:6080/arcgis/rest/services/bznt/MapServer",
+            "url": "http://118.178.118.139/ArcGIS/rest/services/XDNY_BZNT/MapServer",
             // "url": "http://192.168.6.132:8080/ArcGIS/rest/services/BZNT/MapServer",
             "searchField": "项目名称",
             "array": [0],
@@ -245,7 +302,7 @@
             "jsondata": "Json/千万亩工程项目.json",
         },
         "标准农田建设区": {
-            "url": "http://localhost:6080/arcgis/rest/services/bznt/MapServer",
+            "url": "http://118.178.118.139/ArcGIS/rest/services/XDNY_BZNT/MapServer",
             "array": [1],
             "searchField": "项目名称",
             "fieldInfos": [{
@@ -267,7 +324,7 @@
             },
             "jsondata": "Json/标准农田建设区.json",
         }, "储备项目": {
-            "url": "http://localhost:6080/arcgis/rest/services/bznt/MapServer",
+            "url": "http://118.178.118.139/ArcGIS/rest/services/XDNY_BZNT/MapServer",
             "array": [2],
             "searchField": "项目名称",
             "fieldInfos": [{
@@ -290,7 +347,7 @@
             },
             "jsondata": "Json/标准农田.json",
         }, "提升工程": {
-            "url": "http://localhost:6080/arcgis/rest/services/nt/MapServer",
+            "url": "",
             "array": [0],
             "searchField": "项目名称",
             "fieldInfos": [{
@@ -317,7 +374,7 @@
                 "2010": "",
                 "2009": ""
             },
-            "jsondata": "Json/标准农田.json",
+            "jsondata": "",
         }
     }
 }
