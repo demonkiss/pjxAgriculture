@@ -15,9 +15,9 @@ function clearHighLight() {
     $("#searchList").hide();
 }
 function switchLayer() {
-    let minzoom = 0;
-    let midzoom = 0;
-    let maxzoom = 0;
+    var minzoom = 0;
+    var midzoom = 0;
+    var maxzoom = 0;
     require(["mapconfig"], function (mapconfig) {
         minzoom = mapconfig.minZoom;
         midzoom = mapconfig.midZoom
@@ -47,7 +47,7 @@ function switchLayer() {
     if (map.getLayer("blockTextLayer")) {
         map.removeLayer(map.getLayer("blockTextLayer"));
     }
-    let zoomlevel = map.getZoom();
+    var zoomlevel = map.getZoom();
     // if (zoomlevel <= minzoom) {
     //clearHighLight();
     //sssy = "浙江";
@@ -99,7 +99,7 @@ function switchLayer() {
             addMultiClusters(showClusterData);
             // addClusters(showClusterData[0]);
             var number = 0;
-            for (let k = 0; k < showClusterData.length; k++) {
+            for (var k = 0; k < showClusterData.length; k++) {
                 number += showClusterData[k].length
             }
             // alert();
@@ -118,9 +118,12 @@ function switchLayer() {
         $(".next").hide();
         $(".prev").hide();
         $(".title").html("");
-        sssy = getCityName();
+      //  sssy = getCityName();
         // ssqy = getBlockName();
+        sssy = "金华市"
         ssqy = getBlockName();
+       
+       // ssqy = "浦江县";
        // $(".sel-fun button").text(ssqy);
       //  $(".sel-fun button").append("<span class=\"caret\"></span>");
 
@@ -131,13 +134,13 @@ function switchLayer() {
             getClusterData(clusterType, currentattr);//添加聚类图层
         }
         if (showClusterData.length) {
-            let number = 0;
-            for (let k = 0; k < showClusterData.length; k++) {
+            var number = 0;
+            for (var k = 0; k < showClusterData.length; k++) {
                 number += showClusterData[k].length
             }
             $("#total").text(number);
         } else {
-            let number = 0;
+            var number = 0;
             $("#total").text(number);
         }
 
@@ -175,8 +178,8 @@ function addBlockBorder() {
                 require(["esri/layers/GraphicsLayer", "esri/geometry/Polygon", "esri/geometry/Polyline", "esri/symbols/PictureMarkerSymbol", "esri/Color", "esri/graphic", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol", "esri/symbols/TextSymbol",
               "esri/symbols/Font"], function (GraphicsLayer, Polygon, Polyline, PictureMarkerSymbol, Color, Graphic, SimpleLineSymbol, SimpleFillSymbol, TextSymbol, Font) {
                   var borderLayer = new GraphicsLayer({ id: "borderLayer" });
-                  let centerPoint = [(map.extent.xmax + map.extent.xmin) / 2.0, (map.extent.ymax + map.extent.ymin) / 2.0];
-                  for (let i = 0; i < data.features.length; i++) {
+                  var centerPoint = [(map.extent.xmax + map.extent.xmin) / 2.0, (map.extent.ymax + map.extent.ymin) / 2.0];
+                  for (var i = 0; i < data.features.length; i++) {
                       _block = data.features[i].properties.name;
                       if (_block == ssqy) {
                           var geometry = data.features[i].geometry;
@@ -237,7 +240,7 @@ function addBlockStatis() {
                 require(["esri/layers/GraphicsLayer", "esri/geometry/Point", "esri/geometry/Polyline", "esri/geometry/Polygon", "esri/symbols/PictureMarkerSymbol", "esri/Color", "esri/graphic", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol", "esri/symbols/TextSymbol",
               "esri/symbols/Font"], function (GraphicsLayer, Point, Polyline, Polygon, PictureMarkerSymbol, Color, Graphic, SimpleLineSymbol, SimpleFillSymbol, TextSymbol, Font) {
                   var blockTextLayer = new GraphicsLayer({ id: "blockTextLayer" });
-                  for (let i = 0; i < data.features.length; i++) {
+                  for (var i = 0; i < data.features.length; i++) {
                       if (data.features[i].properties.name == ssqy) {
 
                           var point = new Point(data.features[i].properties.cp);
@@ -286,7 +289,7 @@ function addBlockStatis() {
                       ssqy = e.graphic.attributes["name"];
                       getTypeNumber(sssy, "县市区名称", ssqy);
                       var html = ""
-                      for (let i = 0; i < typeNumber.length; i++) {
+                      for (var i = 0; i < typeNumber.length; i++) {
                           html += "<span>" + typeNumber[i].name + ":" + typeNumber[i].number + "</span></br>"
                       }
                       $("#typeinfo").append(html);
@@ -321,23 +324,23 @@ function getTypeNumber(city, attributeName, district) {
 
     if (statisType[0] == "建设分布图") {
 
-        for (let i = 0; i < ClusterData.length; i++) {
+        for (var i = 0; i < ClusterData.length; i++) {
             if (district == ClusterData[i].attributes[attributeName]) {
                 // cData.push(ClusterData[i]);
                 number++;
             }
         }
-        let cData = {};
+        var cData = {};
         cData.name = "建设分布图";
         cData.number = number;
         typeNumber.push(cData);
         // showClusterData.push(cData);
     } else {
         getStatisticsData(city, clusterType, currentattr);//获取统计数据
-        for (let i = 0; i < statisticsData.length; i++) {
+        for (var i = 0; i < statisticsData.length; i++) {
             // if (city == ClusterData[i].attributes["地市名称"]) {
             number += statisticsData[i].length;
-            let cData = {};
+            var cData = {};
             cData.name = statisType[i];
             cData.number = statisticsData[i].length;
             typeNumber.push(cData);
@@ -353,7 +356,7 @@ function getCityCluster(city) {
     showClusterData.length = 0;
     if (clusterType[0] == "建设分布图") {
         var cData = [];
-        for (let i = 0; i < ClusterData.length; i++) {
+        for (var i = 0; i < ClusterData.length; i++) {
             if (city == ClusterData[i].attributes["地市名称"]) {
                 cData.push(ClusterData[i]);
                 // number++;
@@ -367,11 +370,11 @@ function getCityCluster(city) {
     }
 }
 function getCityParam(city, attributeName) {
-    let number = 0;
+    var number = 0;
     if (clusterType[0] == "建设分布图") {
         var cData;
         if (ssqy != "") {
-            for (let i = 0; i < ClusterData.length; i++) {
+            for (var i = 0; i < ClusterData.length; i++) {
 
                 if (ssqy == ClusterData[i].attributes[attributeName]) {
                     // cData.push(ClusterData[i]);
@@ -379,7 +382,7 @@ function getCityParam(city, attributeName) {
                 }
             }
         } else {
-            for (let i = 0; i < ClusterData.length; i++) {
+            for (var i = 0; i < ClusterData.length; i++) {
                 if (city == ClusterData[i].attributes["地市名称"]) {
                     // cData.push(ClusterData[i]);
                     number++;
@@ -389,14 +392,14 @@ function getCityParam(city, attributeName) {
         // showClusterData.push(cData);
     } else {
         getStatisticsData(city, clusterType, currentattr);//获取统计数据
-        for (let i = 0; i < statisticsData.length; i++) {
+        for (var i = 0; i < statisticsData.length; i++) {
             // if (city == ClusterData[i].attributes["地市名称"]) {
             number += statisticsData[i].length;
 
         }
     }
 
-    //for (let i = 0; i < statisticsData.length; i++) {
+    //for (var i = 0; i < statisticsData.length; i++) {
     //    // if (city == ClusterData[i].attributes["地市名称"]) {
     //    number += statisticsData[i].length;
 
@@ -423,9 +426,9 @@ function getCityBlockStatic() {
               "esri/symbols/Font"], function (GraphicsLayer, Point, Polyline, Polygon, PictureMarkerSymbol, Color, Graphic, SimpleLineSymbol, SimpleFillSymbol, TextSymbol, Font) {
                   var cityLayer = new GraphicsLayer({ id: "cityLayer" });
                   var cityTextLayer = new GraphicsLayer({ id: "cityTextLayer" });
-                  let centerPoint = [(map.extent.xmax + map.extent.xmin) / 2.0, (map.extent.ymax + map.extent.ymin) / 2.0];
+                  var centerPoint = [(map.extent.xmax + map.extent.xmin) / 2.0, (map.extent.ymax + map.extent.ymin) / 2.0];
                   var extent = "";
-                  for (let i = 0; i < data.features.length; i++) {
+                  for (var i = 0; i < data.features.length; i++) {
                       var qxName = data.features[i].properties.name;
                       if (qxName == ssqy) {
                           var geometry = data.features[i].geometry;
@@ -504,7 +507,7 @@ function getCityBlockStatic() {
                           ssqy = e.graphic.attributes["name"];
                           getTypeNumber(sssy, "县市区名称", ssqy);
                           var html = ""
-                          for (let i = 0; i < typeNumber.length; i++) {
+                          for (var i = 0; i < typeNumber.length; i++) {
                               html += "<span>" + typeNumber[i].name + ":" + typeNumber[i].number + "</span></br>"
                           }
                           $("#typeinfo").append(html);
@@ -558,8 +561,8 @@ function getBlockName() {
                           "esri/symbols/Font"],
                     function (GraphicsLayer, Point, Polygon, Polyline, PictureMarkerSymbol, Color, Graphic, SimpleLineSymbol, SimpleFillSymbol, TextSymbol, Font) {
                         var borderLayer = new GraphicsLayer({ id: "borderLayer" });
-                        let centerPoint = [(map.extent.xmax + map.extent.xmin) / 2.0, (map.extent.ymax + map.extent.ymin) / 2.0];
-                        for (let i = 0; i < data.features.length; i++) {
+                        var centerPoint = [(map.extent.xmax + map.extent.xmin) / 2.0, (map.extent.ymax + map.extent.ymin) / 2.0];
+                        for (var i = 0; i < data.features.length; i++) {
                             if (PointInsidePolygon(centerPoint, data.features[i].geometry.coordinates[0])) {
                                 console.log(data.features[i].properties.name);
                                 _block = data.features[i].properties.name;
@@ -646,8 +649,8 @@ function getCenterBlockName() {
                 require(["esri/layers/GraphicsLayer", "esri/geometry/Point", "esri/geometry/Polygon", "esri/geometry/Polyline", "esri/symbols/PictureMarkerSymbol", "esri/Color", "esri/graphic", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol", "esri/symbols/TextSymbol",
                           "esri/symbols/Font"],
                     function (GraphicsLayer, Point, Polygon, Polyline, PictureMarkerSymbol, Color, Graphic, SimpleLineSymbol, SimpleFillSymbol, TextSymbol, Font) {
-                        let centerPoint = [(map.extent.xmax + map.extent.xmin) / 2.0, (map.extent.ymax + map.extent.ymin) / 2.0];
-                        for (let i = 0; i < data.features.length; i++) {
+                        var centerPoint = [(map.extent.xmax + map.extent.xmin) / 2.0, (map.extent.ymax + map.extent.ymin) / 2.0];
+                        for (var i = 0; i < data.features.length; i++) {
                             var geometry = data.features[i].geometry;
                             if (geometry.type == "MultiPolygon") {
                                 var length = geometry.coordinates.length;
@@ -722,10 +725,10 @@ function getCityName() {
     if (map.graphics) {
         map.graphics.clear();
     }
-    let _city = "杭州市";
-    // let centerPoint = map.getExtent().getCenter();
-    let centerPoint = [(map.extent.xmax + map.extent.xmin) / 2.0, (map.extent.ymax + map.extent.ymin) / 2.0];
-    for (let i = 0; i < borderData.length; i++) {
+    var _city = "杭州市";
+    // var centerPoint = map.getExtent().getCenter();
+    var centerPoint = [(map.extent.xmax + map.extent.xmin) / 2.0, (map.extent.ymax + map.extent.ymin) / 2.0];
+    for (var i = 0; i < borderData.length; i++) {
         if (PointInsidePolygon(centerPoint, borderData[i].geometry.coordinates[0])) {
             console.log(borderData[i].properties.name);
             _city = borderData[i].properties.name;
@@ -1128,7 +1131,7 @@ function addBorder() {
                   // var cityTextLayer = new GraphicsLayer({ id: "cityTextLayer" });
                   //var textLayer
                   for (var i = 0; i < data.features.length; i++) {
-                      let cityName = data.features[i].properties.name;
+                      var cityName = data.features[i].properties.name;
                       if (sssy == cityName) {
                           var polylineJson = {
                               "paths": data.features[i].geometry.coordinates,
@@ -1233,8 +1236,8 @@ function addZJCityBorder() {
                       };
                       var polygon = new Polygon(polygonJson);
                       var pu = new Polygon(data.features[i].geometry.coordinates);
-                      let cityName = data.features[i].properties.name;
-                      let cityNumber = getCityParam(cityName, "地市名称");
+                      var cityName = data.features[i].properties.name;
+                      var cityNumber = getCityParam(cityName, "地市名称");
                       // var attr = {};
                       var upperValue = 2000;
                       var lowerValue = 0;
@@ -1317,8 +1320,8 @@ function addZJCityNumber() {
                       };
                       var polygon = new Polygon(polygonJson);
                       var pu = new Polygon(data.features[i].geometry.coordinates);
-                      let cityName = data.features[i].properties.name;
-                      let cityNumber = getCityParam(cityName, "地市名称");
+                      var cityName = data.features[i].properties.name;
+                      var cityNumber = getCityParam(cityName, "地市名称");
                       // var attr = {};
                       var upperValue = 2000;
                       var lowerValue = 0;
@@ -1393,7 +1396,7 @@ function addZJCityNumber() {
                       $("#typeinfo").html("");
                       getTypeNumber(e.graphic.attributes["name"], "地市名称", e.graphic.attributes["name"]);
                       var html = ""
-                      for (let i = 0; i < typeNumber.length; i++) {
+                      for (var i = 0; i < typeNumber.length; i++) {
                           html += "<span>" + typeNumber[i].name + ":" + typeNumber[i].number + "</span></br>"
                       }
                       $("#typeinfo").append(html);
@@ -1420,12 +1423,12 @@ function addZJCityNumber() {
 }
 //计算特殊的总数
 function getTotalNumber() {
-    let tNumber = 0;
+    var tNumber = 0;
     total = 0;
     console.log(gnType);
     if (sssy == "浙江" && gnType == "储备项目") {
         for (var i = 0; i < ClusterData.length; i++) {
-            let value = ClusterData[i].attributes[currentattr];
+            var value = ClusterData[i].attributes[currentattr];
             if (clusterType.contains(value)) {
                 tNumber++;
             }
@@ -1460,8 +1463,8 @@ function getCityStaticNumber() {
                           };
                           var polygon = new Polygon(polygonJson);
                           var pu = new Polygon(data.features[i].geometry.coordinates);
-                          let cityName = data.features[i].properties.name;
-                          let cityNumber = getCityParam(cityName, "地市名称");
+                          var cityName = data.features[i].properties.name;
+                          var cityNumber = getCityParam(cityName, "地市名称");
                           // var attr = {};
                           var upperValue = 2000;
                           var lowerValue = 0;
@@ -1529,7 +1532,7 @@ function getCityStaticNumber() {
                       $("#typeinfo").html("");
                       getTypeNumber(e.graphic.attributes["name"], "地市名称", e.graphic.attributes["name"]);
                       var html = ""
-                      for (let i = 0; i < typeNumber.length; i++) {
+                      for (var i = 0; i < typeNumber.length; i++) {
                           html += "<span>" + typeNumber[i].name + ":" + typeNumber[i].number + "</span></br>"
                       }
                       $("#typeinfo").append(html);
@@ -1556,7 +1559,7 @@ function getCityStaticNumber() {
 }
 
 function getSearchSql(sValue) {
-    let sSql = "";
+    var sSql = "";
     var noinput;
     if (sssy == "浙江") {
         noinput = getSearchsql(layerDType, currentattr);
@@ -1568,7 +1571,7 @@ function getSearchSql(sValue) {
     return sSql;
 }
 function getSearchsql(layerDType, attrName) {
-    let sql = "";
+    var sql = "";
     if (layerDType[0] != "建设分布图") {
         if (attrName != "认定面积") {
             sql = attrName + " in (" + layerDType.toString() + ")";
@@ -1588,7 +1591,7 @@ function getSearchsql(layerDType, attrName) {
     return sql;
 }
 function getLayerDefine(layerDType, attrName) {
-    let sql = "";
+    var sql = "";
     if (layerDType[0] != "建设分布图") {
         if (attrName != "认定面积") {
             sql = "地市名称='" + sssy + "' and " + attrName + " in (" + layerDType.toString() + ")";

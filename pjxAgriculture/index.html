@@ -169,8 +169,7 @@
           "TDTLayer_Anno",
        
           "extras/ClusterLayer_M",
-          "Framework/SwitchLayer",
-          "Framework/IdentifyTask",
+
           "mapconfig",
           "dojo/on",
           "dojo/dom-class", "dojo/dom-style",
@@ -182,7 +181,7 @@
           Map, esriRequest, Graphic, Extent,
           SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, PictureMarkerSymbol, ClassBreaksRenderer,
           GraphicsLayer, SpatialReference, InfoTemplate, PopupTemplate, Point, webMercatorUtils, ArcGISDynamicMapServiceLayer, TDTLayer, TDTLayer_Anno,
-          ClusterLayer_M, SwitchLayer, IdentifyTask, mapconfig, on, domClass, domStyle
+          ClusterLayer_M,  mapconfig, on, domClass, domStyle
         ) {
             //ready(function () {
             //   parser.parse();
@@ -296,15 +295,20 @@
                 });
                 tempLayer = new GraphicsLayer({ id: "tempLayer", popupTemplate: popupTemplate });
                 map.addLayer(tempLayer, 4);
-                SwitchLayer.addBlockBorder();
+                require(["Framework/SwitchLayer"], function (SwitchLayer) {
+                    SwitchLayer.addBlockBorder();
+                });
+                
                 //    SwitchLayer.addZJCityBorder();    //添加统计图层
                 // SwitchLayer.addZJCityNumber();
                 //  switchLayer();
                 map.on("extent-change", function () {
-                    SwitchLayer.switchLayer();
+                    require(["Framework/SwitchLayer"], function (SwitchLayer) {
+                        SwitchLayer.switchLayer();
+                    });
                    // getblcok(sssy);
                     //var number = 0;
-                    //for (let i = 0; i < typeNumber.length; i++) {
+                    //for (var i = 0; i < typeNumber.length; i++) {
                     //    number += typeNumber[i].number;
                     //}
                     //$("#total").text(number);
@@ -487,7 +491,9 @@
                             }
                             if (attrName != "") {
                                // getTotalNumber();
-                                SwitchLayer.switchLayer();
+                                require(["Framework/SwitchLayer"], function (SwitchLayer) {
+                                    SwitchLayer.switchLayer();
+                                });
                             } else {
                                 clusterType.length = 0;
                                 layerDType.length = 0;
@@ -621,7 +627,9 @@
                                 // pointData = data;
                                 ClusterData = data.features;
                                 // addClusters(data);
-                                SwitchLayer.switchLayer();
+                                require(["Framework/SwitchLayer"], function (SwitchLayer) {
+                                    SwitchLayer.switchLayer();
+                                });
                                // getTotalNumber();
                             }
                         });                   
@@ -728,13 +736,17 @@
                     var sfs = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASHDOT, new Color([0, 0, 255]), 2), new Color([255, 255, 0, 0.25]));
                     var polygon = searchLayer.graphics[index].geometry;
                     var attr = searchLayer.graphics[index].attributes;
-                    let tempGraphic = new Graphic(polygon, sfs, searchLayer.graphics[index], attr)
+                    var tempGraphic = new Graphic(polygon, sfs, searchLayer.graphics[index], attr)
                     // tempGraphic.setSymbol(sfs);
                     tempLayer.add(tempGraphic);
                     // searchLayer.graphics[index].set
 
                     var cp = polygon.getExtent().getCenter();
-                    var content = IdentifyTask.getShowInfo(attr);
+                    var content ;
+                    
+                    require(["Framework/SwitchLayer", "Framework/IdentifyTask"], function (SwitchLayer, IdentifyTask) {
+                         content = IdentifyTask.getShowInfo(attr);
+                    });
                   //  map.infoWindow.setTitle("属性信息");
                     map.infoWindow.setContent(content);
                     map.infoWindow.show(cp);
@@ -755,8 +767,12 @@
                         $("#farmArea").hide();
 
                         $("#cityArea").hide();
-                        searchSql = SwitchLayer.getSearchSql($("#search input").val());
-                        IdentifyTask.queryBySearch();
+                        require(["Framework/SwitchLayer", "Framework/IdentifyTask"], function (SwitchLayer, IdentifyTask) {
+                           // content = IdentifyTask.getShowInfo(attr);
+                            searchSql = SwitchLayer.getSearchSql($("#search input").val());
+                            IdentifyTask.queryBySearch();
+                        });
+                      
                     } else {
                         alert("请输入名称");
                     }

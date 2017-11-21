@@ -455,7 +455,7 @@ function setSymbol(geo, attr) {
     return graphic;
 }
 function getShowInfo(attr) {
-    let content = "<div class=\"header\" dojoattachpoint=\"_title\">属性信息</div><div class=\"hzLine\"></div>";
+    var content = "<div class=\"header\" dojoattachpoint=\"_title\">属性信息</div><div class=\"hzLine\"></div>";
 
     content += "<table class=\"attrTable\" cellpadding=\"0px\" cellspacing=\"0px\"><tbody>";
     for (var k = 0; k < fieldInfos.length; k++) {
