@@ -269,7 +269,7 @@
                 visiableArray = layerConfig[firstAttr][secondAttr].array;
                 clusterType = ["1", "2", "3"];
                 statisType = ["一等田", "二等田", "三等田"];
-                clusterImg = ["images/gis/标准农田/一等田.png", "images/gis/标准农田/二等田.png", "mages/gis/标准农田/三等田.png"];
+                clusterImg = ["images/gis/标准农田/一等田.png", "images/gis/标准农田/二等田.png", "images/gis/标准农田/三等田.png"];
                 layerDType = ["1", "2", "3"];
                 currentattr = "等级";
 
@@ -581,7 +581,7 @@
                                         } else {
                                             clusterType.push($(e).next().text());
                                             layerDType.push("'" + $(e).next().text() + "'");
-                                            clusterImg.push($(e).prev().prev().attr("src"));
+                                            clusterImg.push($(e).prev().prev().attr("src")); 
                                         }
                                         statisType.push($(e).next().text());
                                         
@@ -688,6 +688,7 @@
                 })
                 $("#farmArea img").click(function () {
                     $(".infocontent").hide();
+                    $("#function").css("background-position-y", "-10px");
                     map.infoWindow.hide();
             
                 })
@@ -1179,13 +1180,13 @@
             <div class="control">
                 <ul class="btns">
                  
-                    <li class="nt active" style="margin-left:20px;">标准农田</li>
+                    <li class="nt active" style="margin-left:20px; display:none">标准农田</li>
                 </ul>
 
                 <ul class="second nt-infocontent" >
                     <li class="cgxm active" style="margin-left:80px;">千万亩工程项目</li>
-                    <!--<li class="bznt">标准农田建设区</li>-->
-                    <li class="cbxm">储备项目</li>
+                    <li class="bznt">标准农田建设区</li>
+                    <!--<li class="cbxm">储备项目</li>-->
                     <!--<li class="tsgc">提升工程</li>-->
                 </ul>
             </div>

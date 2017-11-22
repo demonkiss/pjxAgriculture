@@ -942,19 +942,7 @@ function getStatisticsData(city, types, attr) {
                 }
                 //  if (cdata.length) {
                 statisticsData.push(cdata);
-                //  }
-                //} else {
-                //    $(".checks span").each(function () {
-                //        if ($(this).text() == types[k]) {
-                //            $(this).prev().attr("data-state", "uncheck");
-                //            $(this).prev().removeClass("active");
-                //            clusterImg.remove($(this).prev().attr("src"));
-                //            clusterType.remove(types[k]);
-                //            layerDType.remove("'" + types[k] + "'");
-                //        }
-                //    })
-                //    alert("暂无数据");
-                //}
+
             }
 
             // if
@@ -993,22 +981,7 @@ function getClusterData(types, attr) {
 
                     }
                 }
-                if (cdata.length) {
                     showClusterData.push(cdata);
-                }
-                else {
-                    $(".checks span").each(function () {
-                        if ($(this).text() == types[k]) {
-                            // $(this).prev().attr("data-state", "uncheck");
-                            // $(this).prev().removeClass("active");
-
-                            //  clusterImg.remove($(this).prev().attr("src"));
-                            //  clusterType.remove(types[k]);
-                            //  layerDType.remove("'" + types[k] + "'");
-                        }
-                    })
-                    // alert("暂无此类数据");
-                }
 
             }
         } else {
@@ -1089,22 +1062,8 @@ function getClusterData(types, attr) {
                         }
                         break;
                 }
-                if (cdata.length) {
                     showClusterData.push(cdata);
-                }
-                else {
-                    $(".checks span").each(function () {
-                        if ($(this).text() == types[k]) {
-                            // $(this).prev().attr("data-state", "uncheck");
-                            //  $(this).prev().removeClass("active");
-                            // clusterImg.remove($(this).prev().attr("src"));
-                            //  clusterType.remove(types[k]);
-                            // layerDType.remove("'" + types[k] + "'");
-                        }
-                    })
 
-
-                }
             }
 
             // if

@@ -346,16 +346,19 @@
                 tp = "nowebm";
             }
             for (var m = 0; m < this._clustersArray.length; m++) {
-                this._clusters = this._clustersArray[m];
-                var imgurl = this._clusters[0].attributes.imgurl;
-                // this._defaultSymbol = new PictureMarkerSymbol("./img/marker-" + this._symbol[m] + ".png", 28, 52).setOffset(0, 0);
-                this._defaultSymbol = new PictureMarkerSymbol(imgurl, 14, 16).setOffset(0, 0);
-                var k = 0;
-                for (var i = 0, il = this._clusters.length; i < il; i++) {
-                    var c = this._clusters[i];
-                    this._showCluster(c, tp);
-                    k += this._clusters[i].attributes.clusterCount;
+                if (this._clustersArray[m].length) {
+                    this._clusters = this._clustersArray[m];
+                    var imgurl = this._clusters[0].attributes.imgurl;
+                    // this._defaultSymbol = new PictureMarkerSymbol("./img/marker-" + this._symbol[m] + ".png", 28, 52).setOffset(0, 0);
+                    this._defaultSymbol = new PictureMarkerSymbol(imgurl, 14, 16).setOffset(0, 0);
+                    var k = 0;
+                    for (var i = 0, il = this._clusters.length; i < il; i++) {
+                        var c = this._clusters[i];
+                        this._showCluster(c, tp);
+                        k += this._clusters[i].attributes.clusterCount;
+                    }
                 }
+            
              //   console.log(k);
             }
             //for ( var i = 0, il = this._clusters.length; i < il; i++ ) {
