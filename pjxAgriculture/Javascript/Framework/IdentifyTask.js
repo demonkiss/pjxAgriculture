@@ -459,7 +459,12 @@ function getShowInfo(attr) {
 
     content += "<table class=\"attrTable\" cellpadding=\"0px\" cellspacing=\"0px\"><tbody>";
     for (var k = 0; k < fieldInfos.length; k++) {
-        content += "<tr valign=\"top\"><td class=\"attrName\">"+fieldInfos[k].fieldName + " </td><td class=\"attrValue\"> " + attr[fieldInfos[k].fieldName] + "</td></tr>"
+        if (fieldInfos[k].fieldName == "面积") {
+            content += "<tr valign=\"top\"><td class=\"attrName\">" + fieldInfos[k].fieldName + " </td><td class=\"attrValue\"> " + attr[fieldInfos[k].fieldName] + "平方米</td></tr>"
+        } else {
+            content += "<tr valign=\"top\"><td class=\"attrName\">" + fieldInfos[k].fieldName + " </td><td class=\"attrValue\"> " + attr[fieldInfos[k].fieldName] + "</td></tr>"
+        }
+      //  content += "<tr valign=\"top\"><td class=\"attrName\">"+fieldInfos[k].fieldName + " </td><td class=\"attrValue\"> " + attr[fieldInfos[k].fieldName] + "</td></tr>"
     }
     content += "</tbody></table>";
     console.log(content);

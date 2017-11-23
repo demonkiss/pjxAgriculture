@@ -284,15 +284,27 @@
                 "fieldName": "项目名称",
                 "label": "项目名称",
                 visible: true
-            }, {
-                "fieldName": "县市区名称",
-                "label": "县市区名称",
-                visible: true
-            }, {
-                "fieldName": "面积",
-                "label": "面积",
-                visible: true
-            }],
+            },
+             {
+                 "fieldName": "区块编号",
+                 "label": "区块编号",
+                 visible: true
+             },
+              {
+                  "fieldName": "验收文号",
+                  "label": "验收文号",
+                  visible: true
+              },
+              {
+                  "fieldName": "调查等级",
+                  "label": "调查等级",
+                  visible: true
+              }, {
+                  "fieldName": "面积_亩",
+                  "label": "面积_亩",
+                  visible: true
+              }
+            ],
             "imgurl": {
                 "一等田": "",
                 "二等田": "",
