@@ -489,6 +489,9 @@
                                 }
                                 statisType.remove($(this).next().text());
                             }
+                            if (clusterType.length == 0) {
+                                $("#total").html("0");
+                            }
                             if (attrName != "") {
                                // getTotalNumber();
                                 require(["Framework/SwitchLayer"], function (SwitchLayer) {
@@ -499,6 +502,7 @@
                                 layerDType.length = 0;
                                 clusterImg.length = 0;
                                 statisType.length = 0;
+                                $("#total").html("0");
                             }
                       //  }
                      
